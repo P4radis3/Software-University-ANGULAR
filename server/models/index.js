@@ -1,6 +1,6 @@
 const userModel = require('./userModel');
 const tokenBlacklistModel = require('./tokenBlacklistModel');
 const taskModel = require('./taskModel');
-const commentModel = require('./commentModel');
+const notesModel = require('./notesModel');
 
-module.exports = { userModel, tokenBlacklistModel, taskModel, commentModel }
+module.exports = { userModel, tokenBlacklistModel, taskModel, notesModel }

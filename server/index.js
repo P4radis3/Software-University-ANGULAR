@@ -1,20 +1,22 @@
-global.__basedir = __dirname;
-require('dotenv').config()
-
-const dataBaseConnection = require('./config/database');
-const apiRouter = require('./router');
+const express = require('express');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const config = require('./config/config');
+const dbConnector = require('./config/database');
 const { errorHandler } = require('./utils');
+const router = require('./router');
 
-dataBaseConnection().then(() => {
-  const config = require('./config/config');
+const app = express();
 
-  const app = require('express')();
-  require('./config/express')(app);
+app.use(cors({
+    origin: config.origin,
+    credentials: true
+}));
+app.use(express.json());
+app.use(cookieParser());
 
-  app.use(cors({ origin: config.origin, credentials: true }));
-  app.use('/api', apiRouter);
-  app.use(errorHandler);
-  app.listen(config.port, console.log(`Listening on port ${config.port}`));
+app.use('/api', router);
 
-}).catch(console.error);
+app.use(errorHandler);
+
+dbConnector().then(() => { app.listen(config.port, console.log(`Listening on port ${config.port}!`)); }).catch(console.error);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
-const commentSchema = new mongoose.Schema({
+const noteSchema = new mongoose.Schema({
     text: {
         type: String,
         required: true
@@ -10,11 +10,11 @@ const commentSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User'
     },
-    Task: {
+    taskId: {
         type: ObjectId,
         ref: 'Task',
         required: true
     }
-})
+}, { timestamps: { createdAt: 'createdAt' } });
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model('Note', noteSchema);

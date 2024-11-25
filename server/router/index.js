@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const users = require('./users');
 const tasks = require('./tasks');
-const comments = require('./comments');
+const notes = require('./notes');
 const test = require('./test');
 const { authController } = require('../controllers');
 
@@ -11,7 +11,7 @@ router.post('/logout', authController.logout);
 
 router.use('/users', users);
 router.use('/tasks', tasks);
-router.use('/comments', comments);
+router.use('/notes', notes);
 router.use('/test', test);
 
 module.exports = router;

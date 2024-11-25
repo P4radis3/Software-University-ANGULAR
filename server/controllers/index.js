@@ -1,9 +1,9 @@
 const authController = require('./auth');
+const noteController = require('./noteController');
 const taskController = require('./taskController');
-const commentController = require('./commentController');
 
 module.exports = {
     authController,
-    taskController,
-    commentController,
-}
+    noteController,
+    taskController
+};
