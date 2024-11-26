@@ -1,0 +1,30 @@
+<div class="main-content">
+    <div class="welcome-box">
+        <h2>Taskly!</h2>
+        <p>Your ultimate task management solution. Stay organized and on top of your tasks!</p>
+        <a routerLink="/all-tasks" class="button">View Tasks</a>
+    </div>
+    <div class="image-box">
+        <img src="../assets/pic.png" alt="Image">
+    </div>
+</div>
+
+<div>
+    <h3>Latest Tasks</h3>
+    <div class="task-container" *ngIf="tasks.length > 0">
+        <div class="task-card" *ngFor="let task of tasks | slice:0:3">
+            <div class="task-image">
+                <img src="{{task.imageUrl}}" alt="Task">
+            </div>
+            <div class="task-details">
+                <h3 class="task-title">{{task.title}}</h3>
+                <p class="task-title"><strong>Description:</strong> {{task.description}}</p> <!-- Change CLASS -->
+                <p class="task-title"><strong>Due Date:</strong> {{task.dueDate | date}}</p> <!-- Change CLASS -->
+                <a routerLink="/all-tasks/{{task._id}}" class="btn">View Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="no-tasks-found" *ngIf="tasks.length === 0">
+        No tasks found... Try adding your important tasks!
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<header>
+    <div class="navbar">
+        <div class="navbar-brand">
+            Taskly
+        </div>
+        <div class="navbar-links">
+            <a routerLink="/">Home</a>
+            <a routerLink="/all-tasks">Tasks</a>
+            <a routerLink="/add-task" *ngIf="isLoggedIn">Add Task</a>
+            <a routerLink="/my-profile" *ngIf="isLoggedIn">My Profile</a>
+            <a routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+            <a routerLink="/register" *ngIf="!isLoggedIn">Register</a>
+            <a routerLink="/logout" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+        </div>
+    </div>
+</header>
