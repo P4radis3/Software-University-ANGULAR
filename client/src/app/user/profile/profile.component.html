@@ -1,0 +1,37 @@
+<div class="user-container">
+    <div class="img">
+        <img src="../../../assets/profile-icon.jpg" alt="User image">
+        <h3>{{user.username}}'s profile</h3>
+    </div>
+    <div class="user-info">
+        <p><strong>Username:</strong> {{user.username}}</p>
+        <p><strong>Email:</strong> {{user.email}}</p>
+        <p><strong>Tasks created:</strong> {{user.tasks.length}}</p>
+    </div>
+</div>
+
+<div class="created-tasks-title">
+    <h3>Created Tasks</h3>
+</div>
+
+<div *ngIf="!user">User object is not available</div>
+<div *ngIf="user && !user.tasks">Tasks array is not available</div>
+<div *ngIf="user && user.tasks && user.tasks.length === 0">Tasks array is empty</div>
+
+<div class="task-container" *ngIf="user?.tasks?.length && user.tasks.length > 0">
+    <div class="task-card" *ngFor="let task of user.tasks">
+        <div class="task-image">
+            <img src="{{task.imageUrl}}" alt="Task Image">
+        </div>
+        <div class="task-details">
+            <h3 class="task-title">{{task.title}}</h3>
+            <a routerLink="/all-tasks/{{task._id}}" class="btn">View Details</a>
+        </div>
+    </div>
+</div>
+
+<div class="no-tasks-found-container" *ngIf="!user.tasks?.length">
+    <div class="no-tasks-found">
+        No tasks found. Start adding your more important tasks!
+    </div>
+</div>

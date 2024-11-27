@@ -92,9 +92,15 @@ function getProfile(req, res, next) {
     const { _id: userId } = req.user;
 
     userModel.findOne({ _id: userId }, { password: 0, __v: 0 })
-        .populate('tasks')
+        .populate('games')
         .then(user => { res.status(200).json(user) })
         .catch(next);
 }
 
-module.exports = { login, register, logout, getUser, getProfile }
+module.exports = {
+    login,
+    register,
+    logout,
+    getUser,
+    getProfile
+}

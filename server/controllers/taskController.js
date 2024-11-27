@@ -1,10 +1,7 @@
 const { taskModel, userModel } = require('../models');
 
 function getTasks(req, res, next) {
-    taskModel.find()
-        .populate('userId')
-        .then(tasks => res.json(tasks))
-        .catch(next);
+    taskModel.find().populate('userId').then(tasks => res.json(tasks)).catch(next);
 }
 
 function getOneTask(req, res, next) {
@@ -12,13 +9,7 @@ function getOneTask(req, res, next) {
 
     taskModel.findById(taskId)
         .populate([
-            {
-                path: 'userId',
-                select: '-password'
-            },
-            {
-                path: 'notes'
-            }
+            { path: 'userId', select: '-password' }, { path: 'notes' }
         ])
         .then(task => res.json(task))
         .catch(next);
