@@ -1,4 +1,4 @@
-# Software-University-ANGULAR
+# Taskly. Your ultimate task management solution.
 
 # How to run the application
 **MUST READ**
@@ -10,6 +10,12 @@ git clone https://github.com/P4radis3/Software-University-ANGULAR/.git
 Once you are in your preffered Integrated Development Environment, do `npm install` to install all the dependencies for this project. This step is a **MUST**, without it, the project won't be able to run.
 
 When you're done with the previous step, which is to install the needed dependencies for the project to be able to run, open your terminal and do one of the following commands.
+
+```
+cd .\client\
+ng serve => To run the application in development mode.
+```
+
 ```
 ng serve - Run in development;
 ng build - Create a build;
@@ -23,3 +29,4 @@ node server
 ```
 
 Once you've ran the commands, you should be able to open the open the project in your preferred browser with the following link, `http://localhost:4200` or `http://127.0.0.1:4200`.
+Be aware that the project uses MongoDB as a back-end service, so you need MongoDB Shell. You can download it from [here](https://www.mongodb.com/try/download/community).
