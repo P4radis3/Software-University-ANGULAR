@@ -5,11 +5,10 @@ import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
-
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
-  { path: '**', redirectTo: '/404' },
-  { path: '404', component: ErrorComponent }
+  { path: '404', component: ErrorComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

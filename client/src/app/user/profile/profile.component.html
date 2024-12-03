@@ -14,15 +14,8 @@
     <h3>Created Tasks</h3>
 </div>
 
-<div *ngIf="!user">User object is not available</div>
-<div *ngIf="user && !user.tasks">Tasks array is not available</div>
-<div *ngIf="user && user.tasks && user.tasks.length === 0">Tasks array is empty</div>
-
 <div class="task-container" *ngIf="user?.tasks?.length && user.tasks.length > 0">
     <div class="task-card" *ngFor="let task of user.tasks">
-        <div class="task-image">
-            <img src="{{task.imageUrl}}" alt="Task Image">
-        </div>
         <div class="task-details">
             <h3 class="task-title">{{task.title}}</h3>
             <a routerLink="/all-tasks/{{task._id}}" class="btn">View Details</a>

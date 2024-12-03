@@ -1,18 +1,22 @@
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
 .error-container {
-    max-width: 500px;
+    max-width: 700px;
     padding: 20px;
     text-align: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 h1 {
     font-size: 4em;
-    color: #FF6347;
+    color: #3498db;
     margin-bottom: 0;
 }
 
@@ -38,11 +42,17 @@ li {
     margin-bottom: 10px;
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
+.home-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-a:hover {
-    text-decoration: underline;
+.home-button:hover {
+    background-color: #0056b3;
 }
