@@ -5,13 +5,11 @@ h3 {
     color: #3498db;
 }
 
-
 .task-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 auto;
-    margin-top: 2em;
+    margin: 2em auto 0;
 }
 
 .task-card {
@@ -32,20 +30,6 @@ h3 {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-.task-image {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.task-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
 .task-details {
     padding: 20px;
     text-align: center;
@@ -57,8 +41,9 @@ h3 {
     color: #333;
 }
 
-.task-price {
-    font-size: 18px;
+.task-description,
+.task-due-date {
+    font-size: 16px;
     margin: 10px 0;
     color: #666;
 }
@@ -78,7 +63,7 @@ h3 {
     background-color: #2980b9;
 }
 
-.no-tasks-found-container {
+.no-tasks-container {
     display: flex;
     justify-content: center;
     margin-top: 2em;
