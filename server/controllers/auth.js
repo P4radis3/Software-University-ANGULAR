@@ -92,7 +92,7 @@ function getProfile(req, res, next) {
     const { _id: userId } = req.user;
 
     userModel.findOne({ _id: userId }, { password: 0, __v: 0 })
-        .populate('games')
+        .populate('tasks')
         .then(user => { res.status(200).json(user) })
         .catch(next);
 }

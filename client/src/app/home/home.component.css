@@ -55,8 +55,7 @@ h3 {
 .task-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 2em;
+    margin: 2em auto 0;
 }
 
 .task-card {
@@ -82,12 +81,6 @@ h3 {
     text-align: center;
 }
 
-.task-title {
-    font-size: 20px;
-    margin: 0;
-    color: #333;
-}
-
 .task-description,
 .task-due-date {
     font-size: 16px;
@@ -106,8 +99,44 @@ h3 {
     margin-top: auto;
 }
 
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
 .btn:hover {
     background-color: #2980b9;
+}
+
+.task-card .task-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.task-card .task-status {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.task-card .task-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-top: 1px solid #eaeaea;
+    background-color: #f9f9f9;
+}
+
+.task-card .task-actions .btn {
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.task-card .task-actions .btn:first-child {
+    margin-right: 10px;
 }
 
 .no-tasks-found {

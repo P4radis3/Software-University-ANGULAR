@@ -1,5 +1,5 @@
 .user-container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     margin-top: 2em;
     display: flex;
@@ -32,8 +32,6 @@
 .user-info {
     flex-grow: 1;
     padding: 1em;
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 .user-info p {
@@ -75,7 +73,6 @@
 h3 {
     text-align: center;
     font-size: 1.5em;
-    margin-top: 1em;
     color: #3498db;
 }
 
@@ -124,8 +121,12 @@ h3 {
     text-align: center;
 }
 
-.task-title,
-.task-price,
+.task-description,
+.task-date {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #666;
+}
 
 .task-title {
     font-size: 20px;

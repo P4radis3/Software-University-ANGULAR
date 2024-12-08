@@ -54,15 +54,6 @@
         </ng-container>
 
         <div class="form-group">
-            <label for="imageUrl">Image URL:</label>
-            <input type="text" id="imageUrl" name="imageUrl" formControlName="imageUrl">
-        </div>
-
-        <ng-container *ngIf="form.get('imageUrl')?.touched">
-            <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image URL is required!</p>
-        </ng-container>
-
-        <div class="form-group">
             <button type="submit" class="button" [disabled]="form.invalid">Edit Task</button>
         </div>
     </form>
