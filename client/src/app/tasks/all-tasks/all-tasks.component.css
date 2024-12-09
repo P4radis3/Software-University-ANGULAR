@@ -1,0 +1,78 @@
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: #3498db;
+}
+
+.task-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2em auto 0;
+}
+
+.task-card {
+    width: calc(33.33% - 30px);
+    margin: 0 15px 30px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-card:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.task-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.task-title {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+}
+
+.task-description,
+.task-due-date {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.no-tasks-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.no-tasks-found {
+    text-align: center;
+    font-size: 1.5em;
+    color: #3498db;
+    font-weight: bold;
+    margin-top: 50px;
+}
