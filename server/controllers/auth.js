@@ -97,4 +97,10 @@ function getProfile(req, res, next) {
         .catch(next);
 }
 
-module.exports = { login, register, logout, getUser, getProfile }
+module.exports = {
+    login,
+    register,
+    logout,
+    getUser,
+    getProfile
+}
