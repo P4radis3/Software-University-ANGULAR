@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="login-box">
+        <h2>Login to Taskly</h2>
+        <form class="login-form" [formGroup]="form" (ngSubmit)="login()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" formControlName="email">
+            </div>
+
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+            </ng-container>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" formControlName="password">
+            </div>
+
+            <ng-container *ngIf="form.get('password')?.touched">
+                <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+            </ng-container>
+
+            <div class="error" *ngIf="serverError">{{ serverError }}</div>
+
+            <div class="form-group">
+                <button type="submit" class="button">Login</button>
+            </div>
+            <div class="form-group register-link">
+                Don't have an account? <a routerLink="/register">Register</a>
+            </div>
+        </form>
+    </div>
+</div>
