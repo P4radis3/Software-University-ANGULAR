@@ -1,0 +1,38 @@
+<div class="task-details-wrapper">
+    <div class="task-details-container">
+        <div class="task-details">
+            <h2 class="task-title">{{task.title}}</h2>
+            <div class="additional-details">
+                <p><strong>Description:</strong> {{task.description}}</p>
+                <p><strong>Due Date:</strong> {{task.dueDate | date}}</p>
+                <p><strong>Priority:</strong> {{task.priority}}</p>
+                <p><strong>Status:</strong> {{task.status}}</p>
+            </div>
+            <div class="buttons" *ngIf="isOwner(task)">
+                <a routerLink="/all-tasks/{{task._id}}/edit" class="edit-btn">Edit</a>
+                <button class="delete-btn" (click)="deleteTask()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Notes:</h3>
+<div class="no-notes" *ngIf="notes.length === 0">
+    <p>No notes available.</p>
+</div>
+<div *ngIf="notes.length > 0">
+    <div *ngFor="let note of notes" class="note">
+        <div class="note-header">{{note.userId.username}}</div>
+        <div class="note-body">
+            <p>{{note.text}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="add-note">
+    <h3>Add a Note:</h3>
+    <form [formGroup]="form" (ngSubmit)="addNote()">
+        <textarea formControlName="text" placeholder="Write your note here..."></textarea>
+        <button type="submit" [disabled]="form.invalid">Add Note</button>
+    </form>
+</div>

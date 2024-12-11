@@ -1,0 +1,247 @@
+.task-details-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.task-details-container {
+    display: flex;
+    width: 900px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.task-details {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-title {
+    font-size: 24px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.additional-details p {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.additional-details p strong {
+    color: #333;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: #2980b9;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: #3498db;
+}
+
+.no-notes {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin-top: 1em;
+}
+
+.note {
+    display: block;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 15px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.note-header {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.note-body p {
+    margin: 0;
+    color: #333;
+    max-width: 80%;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.add-note {
+    margin: 20px 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-note textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-note textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+    .task-details-container {
+        display: flex;
+        width: 900px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        background-color: #fff;
+    }
+
+    .task-details {
+        flex: 2;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .task-title {
+        font-size: 24px;
+        margin: 0 0 10px;
+        color: #333;
+    }
+
+    .additional-details p {
+        margin: 0 0 10px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .additional-details p strong {
+        color: #333;
+    }
+
+    .buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .edit-btn:hover,
+    .delete-btn:hover {
+        background-color: #2980b9;
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 1.5em;
+        margin-top: 1em;
+        color: #3498db;
+    }
+
+    .no-notes {
+        text-align: center;
+        font-size: 1.2em;
+        color: #666;
+        margin-top: 1em;
+    }
+
+    .note {
+        display: block;
+        max-width: 1200px;
+        margin: 10px auto;
+        padding: 15px;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .note-header {
+        font-weight: bold;
+        color: #3498db;
+    }
+
+    .note-body p {
+        margin: 0;
+        color: #333;
+        max-width: 80%;
+        padding: 10px;
+        word-wrap: break-word;
+    }
+
+    .add-note {
+        margin: 20px 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-note textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        resize: none;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-note textarea:focus {
+        border-color: #66afe9;
+        outline: none;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
