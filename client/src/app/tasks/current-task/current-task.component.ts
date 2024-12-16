@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+
 import { ApiService } from 'src/app/api.service';
 import { Task } from 'src/app/types/task';
 import { UserService } from 'src/app/user/user.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-current-task',
@@ -17,11 +20,21 @@ export class CurrentTaskComponent implements OnInit {
   taskId: string = '';
   task = {} as Task;
   notes: any[] = [];
-newNoteText: any;
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private userService: UserService, private router: Router, private fb: FormBuilder) { }
+  newNoteText: any;
+
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) { }
+
   get userId(): string {
     return this.userService.user?._id || '';
   }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.taskId = params['taskId'];
@@ -31,6 +44,7 @@ newNoteText: any;
       this.task = task;
     });
   }
+
   loadNotes() {
     this.apiService.getNotes(this.taskId).subscribe(
       (notes: any[]) => {
@@ -38,6 +52,7 @@ newNoteText: any;
       }
     )
   }
+
   addNote(): void {
     if (this.form.invalid) {
       return;
@@ -49,13 +64,17 @@ newNoteText: any;
       this.loadNotes();
     })
   }
+
   isOwner(task: Task) {
     const isUserOwner = task.userId?._id === this.userId;
     return !!isUserOwner;
   }
+
   deleteTask(): void {
-    this.apiService.deleteTask(this.taskId).subscribe(() => {
-      this.router.navigate(['/']);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, { width: '400px' });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { this.apiService.deleteTask(this.taskId).subscribe(() => { this.router.navigate(['/all-tasks']); }); }
     });
   }
 }

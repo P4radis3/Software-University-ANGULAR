@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,22 +14,10 @@ import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ErrorComponent,
-    AuthenticateComponent
-  ],
-  imports: [
-    BrowserModule,
-    CoreModule,
-    SharedModule,
-    TasksModule,
-    UserModule,
-    HttpClientModule,
-    AppRoutingModule,
-  ],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, AuthenticateComponent],
+  imports: [BrowserModule, CoreModule, SharedModule, TasksModule, UserModule, HttpClientModule, AppRoutingModule, MatDialogModule],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
