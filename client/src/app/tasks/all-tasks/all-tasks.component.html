@@ -5,7 +5,7 @@
             <h3 class="task-title">{{task.title}}</h3>
             <p class="task-description"><strong>Description:</strong> {{task.description}}</p>
             <p class="task-due-date"><strong>Due Date:</strong> {{task.dueDate | date}}</p> 
-            <a routerLink="/all-tasks/{{task._id}}" class="btn">View Details</a>
+            <a routerLink="/current-task/{{task._id}}" class="btn">View Details</a>
         </div>
     </div>
 </div>

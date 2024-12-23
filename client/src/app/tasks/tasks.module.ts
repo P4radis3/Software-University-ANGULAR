@@ -8,17 +8,8 @@ import { CurrentTaskComponent } from './current-task/current-task.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
-  declarations: [
-    AllTasksComponent,
-    AddTaskComponent,
-    CurrentTaskComponent,
-    EditTaskComponent
-  ],
-  imports: [
-    CommonModule,
-    TasksRoutingModule,
-    ReactiveFormsModule
-  ],
+  declarations: [AllTasksComponent, AddTaskComponent, CurrentTaskComponent, EditTaskComponent],
+  imports: [CommonModule, TasksRoutingModule, ReactiveFormsModule],
   exports: [AllTasksComponent, AddTaskComponent, CurrentTaskComponent, EditTaskComponent]
 })
 export class TasksModule { }

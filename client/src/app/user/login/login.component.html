@@ -7,18 +7,10 @@
                 <input type="text" id="email" name="email" formControlName="email">
             </div>
 
-            <ng-container *ngIf="form.get('email')?.touched">
-                <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
-            </ng-container>
-
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" formControlName="password">
             </div>
-
-            <ng-container *ngIf="form.get('password')?.touched">
-                <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
-            </ng-container>
 
             <div class="error" *ngIf="serverError">{{ serverError }}</div>
 

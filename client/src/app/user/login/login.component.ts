@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/shared/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -10,32 +11,35 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form = this.fb.group({
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
+    email: [''],
+    password: ['']
   });
 
   serverError: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastService: ToastService) { }
 
   login(): void {
-    Object.values(this.form.controls).forEach(control => {
-      control.markAsTouched();
-    });
+    const { email, password } = this.form.value;
 
-    if (this.form.invalid) {
+    if (!email) {
+      this.toastService.show('Email is required!');
       return;
     }
 
-    const { email, password } = this.form.value;
+    if (!password) {
+      this.toastService.show('Password is required!');
+      return;
+    }
 
-    this.userService.login(email!, password!).subscribe(() => {
+    this.userService.login(email, password).subscribe(() => {
       this.router.navigate(['/']);
     },
-      error => {
-        if (error) {
-          this.serverError = error.error.message;
-        }
-      });
+    error => {
+      if (error) {
+        this.serverError = error.error.message;
+        this.toastService.show(this.serverError);
+      }
+    });
   }
 }

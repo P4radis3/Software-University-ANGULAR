@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
+import { ToastService } from 'src/app/shared/toast.service';
+
+import { validateTaskForm } from 'src/app/shared/utils/validation.utils';
 
 @Component({
   selector: 'app-add-task',
@@ -13,47 +16,41 @@ export class AddTaskComponent implements OnInit {
   minDate: string;
   maxDate: string;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private toastService: ToastService) {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
-    const nextYear = new Date(today.setFullYear(today.getFullYear() + 1));
+    
+    const nextYear = new Date(today.setFullYear(today.getFullYear() + 5));
     this.maxDate = nextYear.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      dueDate: ['', [Validators.required, this.dateRangeValidator.bind(this)]],
-      priority: ['', Validators.required],
-      status: ['', Validators.required]
+    this.form = this.fb.group({ title: ['', Validators.required], description: ['', Validators.required], dueDate: ['', [Validators.required, this.dateRangeValidator(this.minDate, this.maxDate)]], priority: ['', Validators.required], status: ['', Validators.required]
     });
   }
 
-  dateRangeValidator(control: AbstractControl): ValidationErrors | null {
-    const date = new Date(control.value);
-    const minDate = new Date(this.minDate);
-    const maxDate = new Date(this.maxDate);
+  dateRangeValidator(minDate: string, maxDate: string) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const date = control.value;
+      const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
-    if (date < minDate || date > maxDate) {
-      return { dateRange: true };
-    }
-    return null;
+      if (!datePattern.test(date)) { return { invalidDateFormat: true }; }
+
+      const dateObj = new Date(date);
+      const minDateObj = new Date(minDate);
+      const maxDateObj = new Date(maxDate);
+
+      if (isNaN(dateObj.getTime())) { return { invalidDate: true }; }
+      if (dateObj < minDateObj || dateObj > maxDateObj) { return { dateRange: true }; }
+      return null;
+    };
   }
 
   createTask(): void {
-    this.form.markAllAsTouched();
-
-    if (this.form.invalid) { return; }
+    if (!validateTaskForm(this.form, this.toastService)) { return; }
 
     const { title, description, dueDate, priority, status } = this.form.value;
-    this.apiService.createTask(
-      title as string,
-      description as string,
-      new Date(dueDate as string),
-      priority as string,
-      status as string
-    ).subscribe(() => {
+    this.apiService.createTask(title, description, new Date(dueDate), priority, status).subscribe(() => {
       this.router.navigate(['/all-tasks']);
     });
   }

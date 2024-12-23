@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-validator';
+import { ToastService } from 'src/app/shared/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -11,37 +11,53 @@ import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-va
 })
 export class RegisterComponent {
   form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(5)]],
-    email: ['', [Validators.required]],
+    username: [''],
+    email: [''],
     passGroup: this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(5)]],
-      rePassword: ['', [Validators.required]]
-    }, {
-      validators: [matchPasswordsValidator('password', 'rePassword')],
+      password: [''],
+      rePassword: ['']
     })
   });
 
   serverError: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastService: ToastService) { }
 
   register(): void {
-    Object.values(this.form.controls).forEach(control => {
-      control.markAllAsTouched();
-    })
-    
-    if (this.form.invalid) {
+    const { username, email, passGroup: { password, rePassword } = {} } = this.form.value;
+
+    if (!username) {
+      this.toastService.show('Username is required!');
       return;
     }
 
-    const { username, email, passGroup: { password, rePassword } = {} } = this.form.value;
+    if (username.length < 5) {
+      this.toastService.show('Username should be at least 5 characters!');
+      return;
+    }
 
-    this.userService.register(username!, email!, password!, rePassword!).subscribe(() => {
+    if (!email) {
+      this.toastService.show('Email is required!');
+      return;
+    }
+
+    if (!password || !rePassword) {
+      this.toastService.show('Passwords do not match!');
+      return;
+    }
+
+    if (password.length < 5) {
+      this.toastService.show('Password should be at least 5 characters!');
+      return;
+    }
+
+    this.userService.register(username, email, password, rePassword).subscribe(() => {
       this.router.navigate(['/']);
     },
     error => {
       if (error) {
         this.serverError = error.error.message;
+        this.toastService.show(this.serverError);
       }
     });
   }

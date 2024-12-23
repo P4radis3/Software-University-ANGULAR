@@ -1,25 +1,57 @@
-# Software-University-ANGULAR
+# Taskly - Task Management Application
 
-# How to run the application
-**MUST READ**
+Taskly is a task management application built with Angular for the frontend and Node.js with Express & MongoDB for the backend. It allows users to manage their tasks efficiently by providing features such as task creation, editing, deletion, and note-taking.
 
-Start by cloning the project with the following command you'll see bellow:
-```
-git clone https://github.com/P4radis3/Software-University-ANGULAR/.git
-```
-Once you are in your preffered Integrated Development Environment, do `npm install` to install all the dependencies for this project. This step is a **MUST**, without it, the project won't be able to run.
+## Features
 
-When you're done with the previous step, which is to install the needed dependencies for the project to be able to run, open your terminal and do one of the following commands.
+- User Authentication: Register, login, and logout functionality.
+- Task Management: Create, view, edit, and delete tasks.
+- Task Notes: Add and view notes for each task.
+- Task Filtering: View tasks based on their status (pending, completed).
+- Responsive Design: Mobile-friendly user interface.
+
+### Prerequisites
+
+- Node.js
+- Angular CLI
+- MongoDB
+
+### Installation
+
+1. Clone the repository:
 ```
-ng serve - Run in development;
-ng build - Create a build;
-ng serve --prod - Serve the production build;
+git clone https://github.com/P4radis3/Software-University-ANGULAR.git
 ```
 
-When you successfully run the **front-end** part of the project. Your next step is to start the server, so everything back-end wise goes thru. To start the server, open a new terminal and do the two following commands.
+2. Navigate to the project directory:
 ```
-cd .\server\
-node server
+cd Software-University-ANGULAR
 ```
 
-Once you've ran the commands, you should be able to open the open the project in your preferred browser with the following link, `http://localhost:4200` or `http://127.0.0.1:4200`.
+3. Install the dependencies for the client:
+```
+cd client
+npm install
+```
+
+4. Install the dependencies for the server:
+```
+cd ../server
+npm install
+```
+
+### Starting the Application
+# Frontend
+1. Navigate to the client directory and start the Angular development server:
+```
+cd client
+ng serve
+```
+The frontend will be available at http://localhost:4200.
+
+# Backend
+1. Navigate to the server directory and start the Node.JS development server:
+```
+cd ../server
+node index.js
+```

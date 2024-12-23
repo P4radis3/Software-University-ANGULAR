@@ -9,7 +9,7 @@
           <p><strong>Status:</strong> {{task.status}}</p>
         </div>
         <div class="buttons" *ngIf="isOwner(task)">
-          <a routerLink="/all-tasks/{{task._id}}/edit" class="edit-btn">Edit</a>
+          <a routerLink="/edit-task/{{task._id}}" class="edit-btn">Edit</a>
           <button class="delete-btn" (click)="deleteTask()">Delete</button>
         </div>
       </div>

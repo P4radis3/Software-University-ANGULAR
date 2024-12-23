@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { Task } from 'src/app/types/task';
-import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-all-tasks',

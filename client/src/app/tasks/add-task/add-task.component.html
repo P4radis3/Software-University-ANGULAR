@@ -6,26 +6,14 @@
             <input type="text" id="title" name="title" formControlName="title">
         </div>
 
-        <ng-container *ngIf="form.get('title')?.touched">
-            <p class="error" *ngIf="form.get('title')?.errors?.['required']">Title is required!</p>
-        </ng-container>
-
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" formControlName="description"></textarea>
         </div>
 
-        <ng-container *ngIf="form.get('description')?.touched">
-            <p class="error" *ngIf="form.get('description')?.errors?.['required']">Description is required!</p>
-        </ng-container>
-
         <div class="form-group">
             <label for="dueDate">Due Date:</label>
             <input type="date" id="dueDate" name="dueDate" formControlName="dueDate" [min]="minDate" [max]="maxDate">
-            <div *ngIf="form.get('dueDate')?.touched" class="error">
-                <p *ngIf="form.get('dueDate')?.errors?.['required']">Due Date is required!</p>
-                <p *ngIf="form.get('dueDate')?.errors?.['dateRange']">Due date must be between {{ minDate }} and {{ maxDate }}.</p>
-            </div>
         </div>
 
         <div class="form-group">
@@ -37,10 +25,6 @@
             </select>
         </div>
 
-        <ng-container *ngIf="form.get('priority')?.touched">
-            <p class="error" *ngIf="form.get('priority')?.errors?.['required']">Priority is required!</p>
-        </ng-container>
-
         <div class="form-group">
             <label for="status">Status:</label>
             <select id="status" name="status" formControlName="status">
@@ -49,12 +33,8 @@
             </select>
         </div>
 
-        <ng-container *ngIf="form.get('status')?.touched">
-            <p class="error" *ngIf="form.get('status')?.errors?.['required']">Status is required!</p>
-        </ng-container>
-
         <div class="form-group">
-            <button type="submit" class="button" [disabled]="form.invalid">Add Task</button>
+            <button type="submit" class="button">Add Task</button>
         </div>
     </form>
 </div>
