@@ -52,6 +52,6 @@ The frontend will be available at http://localhost:4200.
 # Backend
 1. Navigate to the server directory and start the Node.JS development server:
 ```
-cd ../server
+cd server
 node index.js
 ```
