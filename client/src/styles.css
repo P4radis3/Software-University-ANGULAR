@@ -1,5 +1,9 @@
 * { padding: 0; margin: 0; box-sizing: border-box; overflow: auto; }
-body { font-family: 'Roboto', sans-serif; }
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  color: #000;
+}
 
 .mat-snack-bar-container {
   background-color: #333;
